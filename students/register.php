@@ -1,9 +1,12 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en" class="fixed accounts sign-in">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Helsinki</title>
+    <title>suaeb</title>
     <link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
     <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
@@ -37,10 +40,11 @@
 
         print_r($_POST);
 
-        $query = "INSERT INTO $table(`fname`, `lname`, `reg_no`, `email`, `username`, `password`) VALUES('$fname','$lname','$reg_no','$email','$username','$password')";
+        $query = "INSERT INTO $table(`fname`, `lname`, `reg`, `email`, `username`, `password`) VALUES('$fname','$lname','$reg_no','$email','$username','$password')";
         $result = mysqli_query($link,$query);
         if($result){
             echo "Insert success".$result;
+            $_SESSION['students_login'] = $username;
         }else{
             echo "Error";
         }   

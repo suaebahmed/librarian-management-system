@@ -149,10 +149,16 @@
                             <li class="active-item"><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span></a></li>
                             <!--UI ELEMENTENTS-->
                             <li class="has-child-item close-item">
-                                <a><i class="fa fa-cubes" aria-hidden="true"></i><span>UI Elements</span></a>
+                                <a><i class="fa fa-book" aria-hidden="true"></i><span>books</span></a>
                                 <ul class="nav child-nav level-1">
-                                    <li><a href="ui-elements_panels.html">Panels</a></li>
-                                    <li><a href="ui-elements_accordions.html">Accordions</a></li>
+                                    <li><a href="add-book.php">add book</a></li>
+                                    <li><a href="manage-books.php">manage book</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-child-item close-item">
+                                <a><i class="fa fa-user" aria-hidden="true"></i><span>students</span></a>
+                                <ul class="nav child-nav level-1">
+                                    <li><a href="students.php">see all students</a></li>
                                 </ul>
                             </li>
                         </ul>

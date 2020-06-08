@@ -37,7 +37,7 @@
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             if($row['password'] == $password ){
-                $_SESSION['username_login'] = $username;
+                $_SESSION['students_login'] = $username;
                 header('location: index.php');
             }else{
                 echo "password incorrect";

@@ -1,12 +1,15 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['students_login'])){
+        header('locatoin: sign-in.php');
+    }
+?>
 <!doctype html>
 <html lang="en" class="fixed left-sidebar-top">
-
-
-<!-- Mirrored from myiideveloper.com/helsinki/last-version/helsinki_green-dark/src/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Mar 2019 13:03:33 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Helsinki</title>
+    <title>suaeb</title>
     <link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
     <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
@@ -42,7 +45,7 @@
         <div class="leftside-header">
             <div class="logo">
                 <a href="index.php" class="on-click">
-                    <h3>SMS</h3>
+                    <h3>LMS</h3>
                 </a>
             </div>
             <div id="menu-toggle" class="visible-xs toggle-left-sidebar" data-toggle-class="left-sidebar-open" data-target="html">
@@ -85,33 +88,6 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="left-element"><i class="fa fa-cog color-dark"></i></div>
-                                            <div class="text">
-                                                <span class="title">New Configuration</span>
-                                                <span class="subtitle"></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="left-element"><i class="fa fa-tasks color-success"></i></div>
-                                            <div class="text">
-                                                <span class="title">14 Task</span>
-                                                <span class="subtitle">completed</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="left-element"><i class="fa fa-envelope color-primary"></i></div>
-                                            <div class="text">
-                                                <span class="title">21 Menssage</span>
-                                                <span class="subtitle"> (see more)</span>
-                                            </div>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -129,8 +105,8 @@
                         <img alt="profile photo" src="../assets/images/avatar/avatar_user.jpg" />
                     </div>
                     <div class="user-info">
-                        <span class="user-name">Jane Doe</span>
-                        <span class="user-profile">Admin</span>
+                        <span class="user-name"><?php if(isset($_SESSION['students_login'])) echo $_SESSION['students_login']; ?></span>
+                        <span class="user-profile">student</span>
                     </div>
                     <i class="fa fa-plus icon-open" aria-hidden="true"></i>
                     <i class="fa fa-minus icon-close" aria-hidden="true"></i>
@@ -173,10 +149,10 @@
                             <li class="active-item"><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span></a></li>
                             <!--UI ELEMENTENTS-->
                             <li class="has-child-item close-item">
-                                <a><i class="fa fa-cubes" aria-hidden="true"></i><span>UI Elements</span></a>
+                                <a><i class="fa fa-book" aria-hidden="true"></i><span>Book</span></a>
                                 <ul class="nav child-nav level-1">
-                                    <li><a href="ui-elements_panels.html">Panels</a></li>
-                                    <li><a href="ui-elements_accordions.html">Accordions</a></li>
+                                    <li><a href="my-books.php">my books</a></li>
+                                    <li><a href="all-books.php">see books</a></li>
                                 </ul>
                             </li>
                         </ul>
