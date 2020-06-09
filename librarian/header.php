@@ -152,7 +152,9 @@
                                 <a><i class="fa fa-book" aria-hidden="true"></i><span>books</span></a>
                                 <ul class="nav child-nav level-1">
                                     <li><a href="add-book.php">add book</a></li>
-                                    <li><a href="manage-books.php">manage book</a></li>
+                                    <li><a href="manage-books.php">manage books</a></li>
+                                    <li><a href="issue-book.php">issue books</a></li>
+                                    <li><a href="return-book.php">return books</a></li>
                                 </ul>
                             </li>
                             <li class="has-child-item close-item">
