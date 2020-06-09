@@ -19,6 +19,7 @@ CREATE TABLE students(
     email varchar(50) NOT NULL,
     username varchar(50) NOT NULL,
     password varchar(80) NOT NULL,
+    status varchar(20) DEFAULT 'inactive',
     datetime date NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -26,7 +27,7 @@ CREATE TABLE books(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     book_name varchar(50) NOT NULL,
     book_image varchar(50) NOT NULL,
-    book_auth_name varchar(50) NOT NULL,
+    book_author varchar(50) NOT NULL,
     book_publication_name varchar(50) NOT NULL,
     book_purchase_date varchar(50) NOT NULL,
     book_price int NOT NULL,

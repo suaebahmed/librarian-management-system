@@ -37,13 +37,19 @@
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             if($row['password'] == $password ){
-                $_SESSION['students_login'] = $username;
-                header('location: index.php');
+
+                if($row['status'] == 'active'){
+                    $_SESSION['students_login'] = $username;
+                    header('location: index.php');    
+                }else{
+                    $_SESSION['sign_error'] = "your account is watch mode and will be activate within 24hr";
+                }
+                
             }else{
-                echo "password incorrect";
+                $_SESSION['sign_error'] = "password incorrect";
             }
         }else{
-            echo "username incorrect";
+            $_SESSION['sign_error'] = "username incorrect";
         }
     }
 ?>
@@ -57,6 +63,14 @@
             <!--SIGN IN FORM-->
             <div class="panel mb-none">
                 <div class="panel-content bg-scale-0">
+
+                <?php
+                    if(isset($_SESSION['sign_error'])){
+                        echo "<div class='alert alert-danger'>".$_SESSION['sign_error']."</div>";
+                        unset($_SESSION['sign_error']);
+                    }
+                ?>
+
                     <form action="sign-in.php" method="POST">
                         <div class="form-group mt-md">
                             <span class="input-with-icon">

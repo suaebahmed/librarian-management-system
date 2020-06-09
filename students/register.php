@@ -38,15 +38,14 @@
         $password = $_POST['password'];
         $reg_no = $_POST['reg_no'];
 
-        print_r($_POST);
-
         $query = "INSERT INTO $table(`fname`, `lname`, `reg`, `email`, `username`, `password`) VALUES('$fname','$lname','$reg_no','$email','$username','$password')";
         $result = mysqli_query($link,$query);
+
+        $msg = array();
         if($result){
-            echo "Insert success".$result;
-            $_SESSION['students_login'] = $username;
+            $msg['reg_success'] = 'register successfull you can sign-in';
         }else{
-            echo "Error";
+            $msg['reg_error'] = 'register error';
         }   
     }
 ?>
@@ -57,6 +56,16 @@
         <div class="logo text-center">
            <h1>Students register</h1>
         </div>
+        <?php
+            if(isset($msg['reg_success'])){
+                echo "<div class='alert alert-success'>".$msg['reg_success']."</div>";
+                //unset();
+            }
+            if(isset($msg['reg_error'])){
+                echo "<div class='alert alert-danger'>".$msg['reg_error']."</div>";
+                //unset();
+            }
+        ?>
         <div class="box">
             <div class="panel mb-none">
                 <div class="panel-content bg-scale-0">

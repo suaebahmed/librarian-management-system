@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['students_login'])){
-        header('locatoin: sign-in.php');
+        header('location: sign-in.php');
     }
 ?>
 <!doctype html>
@@ -64,7 +64,7 @@
                     <div class="dropdown-box basic">
                         <div class="drop-header">
                             <h3><i class="fa fa-bell-o" aria-hidden="true"></i> Notifications</h3>
-                            <span class="badge x-danger b-rounded">7</span>
+                            <span class="badge x-danger b-rounded">3</span>
 
                         </div>
                         <div class="drop-content">
