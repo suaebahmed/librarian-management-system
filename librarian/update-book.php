@@ -55,9 +55,6 @@
         }
         if(isset($_FILES['book_image']['name']) && !empty($_FILES['book_image']['name'])){
             $book_image = $_FILES['book_image']['name'];
-            echo "<pre>";
-                print_r($book_image);
-            echo "</pre>";
         }
         if(isset($_POST['book_publication_name'])){
             $book_publication_name = $_POST['book_publication_name'];
@@ -83,11 +80,13 @@
 
         $result = mysqli_query($link,$query);
         if($result){
-            // move_uploaded_file($_FILES['book_image']['tmp_name'],"../images/$book_image_name");
-            // // unlink()
-            $_SESSION['update_book_success'] = 'successfully book added';
-            header('location: manage-books.php');
-
+            $success_up = move_uploaded_file($_FILES['book_image']['tmp_name'],"../images/$book_image");
+            if($success_up){
+                unlink("../images/".$editRow['book_image']);
+                
+                $_SESSION['update_book_success'] = 'successfully book added';
+                header('location: manage-books.php');
+            }
         }else{
             $_SESSION['update_book_error'] = 'not book added';
         }
