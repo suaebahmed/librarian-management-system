@@ -68,7 +68,7 @@
                         <td><?php echo $row['datetime']; ?></td>
                         <td>
                             <a href="manage-books.php?delete=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="fa fa-trash"></i></a>
-                            <a href="update-book.php?editId=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="update-book.php?editId=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                         </td>
                     </tr>
                 <?php

@@ -31,31 +31,62 @@
 
         $editResult = mysqli_query($link,$editQuery);
         $editRow = mysqli_fetch_assoc($editResult);
+
+        $book_name = $editRow['book_name'];
+        $book_author = $editRow['book_author'];
+        $book_image = $editRow['book_image'];
+        $book_publication_name = $editRow['book_publication_name'];
+        $book_purchase_date = $editRow['book_purchase_date'];
+
+        $book_price = $editRow['book_price'];
+        $book_qty = $editRow['book_qty'];
+        $book_available_qty = $editRow['book_available_qty'];
+        $librarian_username = $editRow['librarian_username'];
+
     }
 
     if(isset($_POST['update_book'])){
 
-        $book_name = $_POST['book_name'];
-        $book_author = $_POST['book_author'];
-    
-        $book_image_name = $_FILES['book_image']['name'];
-    
-        $book_publication_name = $_POST['book_publication_name'];
-        $book_purchase_date = $_POST['book_purchase_date'];
-        $book_price = $_POST['book_price'];
-        $book_qty = $_POST['book_qty'];
-        $book_available_qty = $_POST['book_available_qty'];
-        $librarian_username = $_POST['librarian_username'];
-    
+        if(isset($_POST['book_name'])){
+            $book_name = $_POST['book_name'];
+        }
+        if(isset($_POST['book_author'])){
+            $book_author = $_POST['book_author'];
+        }
+        if(isset($_FILES['book_image']['name']) && !empty($_FILES['book_image']['name'])){
+            $book_image = $_FILES['book_image']['name'];
+            echo "<pre>";
+                print_r($book_image);
+            echo "</pre>";
+        }
+        if(isset($_POST['book_publication_name'])){
+            $book_publication_name = $_POST['book_publication_name'];
+        }
+        if(isset($_POST['book_purchase_date'])){
+            $book_purchase_date = $_POST['book_purchase_date'];
+        }
+        if(isset($_POST['book_price'])){
+            $book_price = $_POST['book_price'];
+        }       
 
-        $query = "";
+        if(isset($_POST['book_qty'])){
+            $book_qty = $_POST['book_qty'];
+        }
+
+        if(isset($_POST['book_available_qty'])){
+            $book_available_qty = $_POST['book_available_qty'];
+        }        
+        if(isset($_POST['librarian_username'])){
+            $librarian_username = $_POST['librarian_username'];
+        }
+        $query = "UPDATE `books` SET `book_name`='$book_name',`book_author`='$book_author',`book_image`='$book_image',`book_publication_name`='$book_publication_name',`book_purchase_date`='$book_purchase_date',`book_price`=$book_price,`book_qty`=$book_qty,`book_available_qty`=$book_available_qty,`librarian_username`='$librarian_username' WHERE id = $id";
 
         $result = mysqli_query($link,$query);
-
         if($result){
-            move_uploaded_file($_FILES['book_image']['tmp_name'],"../images/$book_image_name");
-            // unlink()
+            // move_uploaded_file($_FILES['book_image']['tmp_name'],"../images/$book_image_name");
+            // // unlink()
             $_SESSION['update_book_success'] = 'successfully book added';
+            header('location: manage-books.php');
 
         }else{
             $_SESSION['update_book_error'] = 'not book added';
@@ -138,7 +169,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <input type="submit" class='btn btn-block btn-primary' name="add_book" value="Update book" class="form-control">
+                            <input type="submit" class='btn btn-block btn-primary' name="update_book" value="Update book" class="form-control">
                         </div>
                         <div class="form-group text-center">
                             want to go home?, <a href="index.php">home</a>
